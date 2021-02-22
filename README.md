@@ -25,7 +25,7 @@ PS_mat.rds
 
 ## Step 2: Prior predictive checking with files in the checks directory
 
-1. Run prior_predictive_check.R to perform prior predictive checks for the Post-GPA and Prev-GPA hierarchical models. The sampling design studied in the manuscript is incorporated in prior_predictive_check.R. This step requires the files generated in the first subsection:
+1. Run prior_predictive_check.R to perform prior predictive checks for the Post-GPA and Prev-GPA hierarchical models. The sampling design studied in the manuscript is incorporated in prior_predictive_check.R. This step requires the files generated in the Step 1 subsection:
 
 ```
 pop_draw.rds
@@ -36,5 +36,26 @@ PS_mat.rds
 
 ## Step 3: Simulation study with files in the simulation directory
 
-1. ate_calculation_pipeline_v8_8_test.R runs a simulation iteration on an individual CPU. Line 4 represents the number of simulation iterations and line 7 represents the number of CPUs to use. These two numbers should match. In this case, we're running 20 simulation iterations (100 simulation iterations were done in the manuscript). After running ate_calculation_pipeline_v8_8_test.R, the file containing results of 20 simulation iterations is generated: ```20_20_1000_v8_8.RData```
+1. ate_calculation_pipeline_v8_8_test.R runs a simulation iteration on an individual CPU. Line 4 represents the number of simulation iterations and line 7 represents the number of CPUs to use. These two numbers should match. In this case, we're running 20 simulation iterations (100 simulation iterations were done in the manuscript). After running ate_calculation_pipeline_v8_8_test.R, the file containing results of 20 simulation iterations is generated: ```20_20_1000_v8_8.RData```. This step requires the files generated in the Step 1 subsection:
+
+```
+pop_draw.rds
+PS_mat.rds
+```
+
+2. viz_v8_8.R produces the figures and tables in the manuscript. Line 169 requires the simulation data generated with ate_calculation_pipeline_v8_8_test.R. For example, running 
+
+```
+filenames = c("20_20_1000_v8_8.RData",
+              "30_30_1000_v8_8.RData")
+```
+
+will visualize 50 simulation iterations. This step requires the files generated in the Step 1 subsection:
+
+```
+pop_draw.rds
+PS_mat.rds
+CATE_school_v4.rds
+```
+
 
