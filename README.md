@@ -25,5 +25,12 @@ PS_mat.rds
 
 ## Prior predictive checking
 
-1. 
+1. Run prior_predictive_check.R to perform prior predictive checks for the Post-GPA and Prev-GPA hierarchical models. The sampling design studied in the manuscript is incorporated in prior_predictive_check.R. This step requires the files generated in the first subsection:
+
+```
+pop_draw.rds
+PS_mat.rds
+```
+
+2. Run subgroupsizes_simulation.R to get the average sample size for the subgroups of the CATEs studied in the manuscript, as well as the relative size of such subgroups in the target population. This step requires the file ```pop_draw.rds```
 
